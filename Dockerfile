@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm i --production --registry https://registry.npm.taobao.org
+RUN npm i --production
 
 CMD node index.js
