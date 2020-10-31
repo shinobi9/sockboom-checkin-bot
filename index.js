@@ -1,14 +1,18 @@
-const request = require('request')
-const CronJob = require('cron').CronJob;
+import request from 'request';
+import cron from 'cron';
 const BOT_COOKIE = process.env.SOCKBOOM_BOT_COOKIE || ''
 const BOT_CRON_EXPRESS = process.env.SOCKBOOM_BOT_CRON || '0 1 2 * * *'
 const BOT_TIME_ZONE = process.env.SOCKBOOM_BOT_TIMEZONE || 'Asia/Shanghai'
 
-const job = new CronJob(cronTime = BOT_CRON_EXPRESS, onTick = () => {
-    checkin()
-    const date = new Date();
-    console.log(`checkin at: ${date}`)
-}, timeZone = BOT_TIME_ZONE);
+const job = new cron.CronJob({
+    cronTime: BOT_CRON_EXPRESS,
+    onTick: () => {
+        checkin()
+        const date = new Date();
+        console.log(`checkin at: ${date}`)
+    },
+    timeZone: BOT_TIME_ZONE
+})
 
 function checkin() {
     request.post({
