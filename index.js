@@ -1,5 +1,5 @@
-import { post } from 'request';
-import { CronJob } from 'cron';
+const request = require('request')
+const CronJob = require('cron').CronJob;
 const BOT_COOKIE = process.env.SOCKBOOM_BOT_COOKIE || ''
 const BOT_CRON_EXPRESS = process.env.SOCKBOOM_BOT_CRON || '0 1 2 * * *'
 const BOT_TIME_ZONE = process.env.SOCKBOOM_BOT_TIMEZONE || 'Asia/Shanghai'
@@ -11,7 +11,7 @@ const job = new CronJob(cronTime = BOT_CRON_EXPRESS, onTick = () => {
 }, timeZone = BOT_TIME_ZONE);
 
 function checkin() {
-    post({
+    request.post({
         url: 'https://sockboom.art/user/checkin',
         headers: {
             'cookie': BOT_COOKIE
