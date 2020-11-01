@@ -5,5 +5,5 @@ WORKDIR /app
 COPY . .
 
 RUN npm i --production
-
-CMD node index.js
+# keep time log correct
+CMD env TZ='Asia/Shanghai' node index.js
