@@ -4,8 +4,7 @@
 ```
 usage:
 docker run -it --rm \
-    -e SOCKBOOM_BOT_USERNAME="<your username , shoule be a email>" \
-    -e SOCKBOOM_BOT_PASSWORD="<your password>" \
+    -e SOCKBOOM_BOT_TOKEN="<see in https://sockboom.art/user/edit>" \
     -e SOCKBOOM_BOT_CRON="<cron expression , default : 0 1 2 * * * >" \
     -e SOCKBOOM_BOT_TIMEZONE="<default : Asia/Shanghai >" \
     --name bot \
