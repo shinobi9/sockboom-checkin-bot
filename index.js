@@ -1,7 +1,7 @@
 import request from 'request';
 import cron from 'cron';
 
-const BOT_TOKEN = process.env.BOT_TOKEN || ''
+const BOT_TOKEN = process.env.SOCKBOOM_BOT_TOKEN || ''
 const BOT_CRON_EXPRESS = process.env.SOCKBOOM_BOT_CRON || '0 1 2 * * *'
 const BOT_TIME_ZONE = process.env.SOCKBOOM_BOT_TIMEZONE || 'Asia/Shanghai'
 
