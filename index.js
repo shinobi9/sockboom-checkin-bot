@@ -16,7 +16,7 @@ const humanResponse = (_error, response, _body) => {
 
 function checkin(block) {
     request.get({
-        url: `https://api.sockboom.cc/client/checkin?token=${BOT_TOKEN}`,
+        url: `https://api.sockboom.click/client/checkin?token=${BOT_TOKEN}`,
     }, (_error, response, _body) => {
         humanResponse(_error, response, _body)
         block()
@@ -37,3 +37,6 @@ const job = new cron.CronJob({
 console.log('bot init..')
 job.start()
 console.log('bot working..')
+// checkin(() => {
+//     console.log(`checkin at: ${new Date().toLocaleString()}`)
+// })
