@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/robfig/cron/v3"
 	"io"
 	"io/ioutil"
@@ -46,9 +45,11 @@ func main() {
 	}
 
 	c.Start()
-	var exit string
-	_, err := fmt.Scan(&exit)
-	handleError(err)
+	//var exit string
+	//_, err := fmt.Scan(&exit)
+	//handleError(err)
+	ch := make(chan int)
+	<-ch
 }
 
 func handleError(err error) {
