@@ -14,4 +14,6 @@ WORKDIR /app
 
 COPY --from=build /app/sockboom-check-bot /app
 
+RUN apk add --no-cache tzdata
+
 CMD ["/app/sockboom-check-bot"]
