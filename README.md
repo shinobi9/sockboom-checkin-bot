@@ -1,5 +1,7 @@
 ## sockboom bot
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/shinobi9/sockboom-checkin-bot?style=for-the-badge)
+<!-- ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/shinobi9/sockboom-checkin-bot?style=for-the-badge) -->
+
+![Github Actions](https://img.shields.io/github/actions/workflow/status/shinobi9/sockboom-checkin-bot/build?style=for-the-badge)
 
 
 [docker repository](https://hub.docker.com/r/shinobi9/sockboom-checkin-bot)
