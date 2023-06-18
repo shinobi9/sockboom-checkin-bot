@@ -14,9 +14,14 @@ const defaultCron = "2 0 * * *"
 const defaultTimezone = "Asia/Shanghai"
 
 func main() {
+	apiBaseUrl, hasApiBaseUrl := os.LookupEnv("SOCKBOOM_API_BASE_URL")
 	token, hasToken := os.LookupEnv("SOCKBOOM_BOT_TOKEN")
 	cronExpression, hasCron := os.LookupEnv("SOCKBOOM_BOT_CRON")
 	timezone, hasTimezone := os.LookupEnv("SOCKBOOM_BOT_TIMEZONE")
+	if !hasApiBaseUrl{
+		apiBaseUrl = "https://api.sockboom.click"
+	}
+
 	if !hasToken {
 		token = ""
 	}
@@ -34,12 +39,12 @@ func main() {
 
 	c := cron.New(cron.WithLocation(loc))
 	_, userCronError := c.AddFunc(cronExpression, func() {
-		checkin(token)
+		checkin(token,apiBaseUrl)
 	})
 	if userCronError != nil {
 		log.Printf("error use cron '%s', fall back to default cron '%s'\n", cronExpression, defaultCron)
 		_, err := c.AddFunc(defaultCron, func() {
-			checkin(token)
+			checkin(token,apiBaseUrl)
 		})
 		handleError(err)
 	}
@@ -58,8 +63,9 @@ func handleError(err error) {
 	}
 }
 
-func checkin(token string) {
-	resp, err := http.Get("https://api.sockboom.click/client/checkin?token=" + token)
+func checkin(token string,apiBaseUrl string) {
+	api := apiBaseUrl + "/client/checkin?token="
+	resp, err := http.Get(api + token)
 	handleError(err)
 	defer func(Body io.ReadCloser) {
 		handleError(Body.Close())

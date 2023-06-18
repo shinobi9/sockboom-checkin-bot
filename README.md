@@ -9,6 +9,7 @@
 ##### usage:
 ```shell
 docker run -it --rm \
+    -e SOCKBOOM_API_BASE_URL="<default : https://api.sockboom.click>" \
     -e SOCKBOOM_BOT_TOKEN="<see in https://sockboom.lol/user/edit>" \
     -e SOCKBOOM_BOT_CRON="<cron expression , default : 2 0 * * * >" \
     -e SOCKBOOM_BOT_TIMEZONE="<default : Asia/Shanghai >" \
